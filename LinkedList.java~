@@ -1,6 +1,11 @@
 public class LinkedList
 {
-  private Node head;
+  private sNode head;
   private int listCount;
   
- 
+ public LinkedList()
+ {
+   head = new Node(null);
+   listCount = 0;
+ }
+}
