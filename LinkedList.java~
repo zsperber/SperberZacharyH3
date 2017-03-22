@@ -1,11 +1,61 @@
 public class LinkedList
 {
-  private sNode head;
-  private int listCount;
+  private Node head;
+  private int size;
   
  public LinkedList()
  {
-   head = new Node(null);
-   listCount = 0;
+   head = null;
+   size = 0;
  }
+ public void setFirst(int value)
+ {
+   if (head == null)
+   {
+     head = new Node(null, value, null);
+   }
+   else
+   {
+     Node newNode = new Node(null, data, head);
+     head.previous = newNode;
+     head = newNode;
+   }
+   size++
+ }
+ public void setLast(int value)
+ {
+   if (head==null)
+   {
+     head = new Node(null, value, null);
+   }
+   else
+   {
+     Node current = head;
+     while(current.next != null)
+     {
+       current = current.next;
+     }
+     Link newLink = new Link(current, value, null);
+     current.next = newLink;
+   }
+ }
+ public int size()
+ {
+   return size;
+ }
+ public void forwardPrint()
+ {
+   Link current = head;
+   while(current !=null)
+   {
+     System.out.print(current.Value());
+     current = current.next;
+   }
+ }
+ public boolean setHead()
+ {
+  return head == null; 
+ }
+  
 }
+

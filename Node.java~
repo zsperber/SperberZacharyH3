@@ -1,0 +1,23 @@
+public class Node
+{
+  private int data;
+  public Link previous;
+  public Link next;
+  
+  public Link(int data)
+{
+  previous = null;
+  this.value = value;
+  next = null;
+  }
+  public Link(Link previous, int value, Link next)
+  {
+    this.previous = previous;
+    this.data = data;
+    this.next = next;
+  }
+  public int Value()
+  {
+    return value;
+  }
+}
