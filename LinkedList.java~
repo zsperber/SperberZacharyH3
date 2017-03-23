@@ -1,13 +1,17 @@
+//* LinkedList class is a doubly linked list that is designed to be able to accept a new first or last value
+/* and print the list backward and forward*/
 public class LinkedList
 {
-  private Node head;
-  private int size;
+  private Node head; //field variable head of type Node
+  private int size; //field variable size of type int
   
+  //* LinkedList constructor assigns values to the field variables*/
  public LinkedList()
  {
-   head = null;
-   size = 0;
+   head = null; //head is set to null
+   size = 0; //size is set to 0
  }
+ //* method setFirst is designed to accept a new value at the front of the list*/
  public void setFirst(int value)
  {
    if (head == null)
@@ -16,11 +20,11 @@ public class LinkedList
    }
    else
    {
-     Node newNode = new Node(null, data, head);
+     Node newNode = new Node(null, value, head);
      head.previous = newNode;
      head = newNode;
    }
-   size++
+   size++;
  }
  public void setLast(int value)
  {
@@ -35,8 +39,8 @@ public class LinkedList
      {
        current = current.next;
      }
-     Link newLink = new Link(current, value, null);
-     current.next = newLink;
+     Node newNode = new Node(current, value, null);
+     current.next = newNode;
    }
  }
  public int size()
@@ -45,10 +49,10 @@ public class LinkedList
  }
  public void forwardPrint()
  {
-   Link current = head;
+   Node current = head;
    while(current !=null)
    {
-     System.out.print(current.Value());
+     System.out.print(current.Value()+", ");
      current = current.next;
    }
  }
@@ -56,6 +60,16 @@ public class LinkedList
  {
   return head == null; 
  }
+ public static void main(String[] args)
+ {
+  LinkedList x = new LinkedList();
+  x.setFirst(3);
+  x.setFirst(2);
+  x.setFirst(1);
+  x.setLast(4);
+  x.forwardPrint();
+  System.out.println("");
   
+ }
 }
 

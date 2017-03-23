@@ -1,23 +1,27 @@
+//* This Node class serves to initialise variables of type Node to use in a doubly linked list*/
 public class Node
 {
-  private int data;
-  public Link previous;
-  public Link next;
+  private int value; //field variable value of type int
+  public Node previous; //field variable previous of type Node
+  public Node next; //field variable next of type Node
   
-  public Link(int data)
+  //* Sets values to the field variables*/
+  public Node(int value)
 {
-  previous = null;
-  this.value = value;
-  next = null;
+  previous = null; //assigns previous to null
+  this.value = value; //assigns value to itself
+  next = null; //assigns next to null
   }
-  public Link(Link previous, int value, Link next)
+  //*Node constructor assigns field variables to themselves*/
+  public Node(Node previous, int value, Node next)
   {
-    this.previous = previous;
-    this.data = data;
-    this.next = next;
+    this.previous = previous; //assigns previous to itself
+    this.value = value; //assigns value to itself
+    this.next = next; //assigns next to itself
   }
+  //* method Value returns value for value*/
   public int Value()
   {
-    return value;
+    return value; //returns value
   }
 }
