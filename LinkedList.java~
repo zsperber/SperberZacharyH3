@@ -3,20 +3,23 @@
 public class LinkedList
 {
   private Node head; //field variable head of type Node
+  private Node tail; 
   private int size; //field variable size of type int
   
   //* LinkedList constructor assigns values to the field variables*/
  public LinkedList()
  {
    head = null; //head is set to null
+   tail = null;
    size = 0; //size is set to 0
  }
- //* method setFirst is designed to accept a new value at the front of the list*/
- public void setFirst(int value)
+ /*
+ public void setFirst(String value)
  {
    if (head == null)
    {
      head = new Node(null, value, null);
+     tail = head;
    }
    else
    {
@@ -26,49 +29,101 @@ public class LinkedList
    }
    size++;
  }
- public void setLast(int value)
+ */
+ public void add(String value)
  {
+   if(value==null)
+   {
+     return;  
+   }
    if (head==null)
    {
-     head = new Node(null, value, null);
+     Node newNode = new Node(value);
+     head = tail = newNode ;
+   }
+   else if (head==tail)
+   {
+   Node newNode = new Node(value);
+     if(newNode.getValue().compareToIgnoreCase(head.getValue())<0)
+     {
+       
+       head.setPrevious(newNode);
+     newNode.setNext(head);
+         head = newNode;
+     }
+     else if(newNode.getValue().compareToIgnoreCase(head.getValue())>0)
+     {
+       tail = newNode;
+       newNode.setNext(tail);
+       tail.setPrevious(head);
+     }
    }
    else
-   {
-     Node current = head;
-     while(current.next != null)
      {
-       current = current.next;
-     }
-     Node newNode = new Node(current, value, null);
-     current.next = newNode;
-   }
- }
- public int size()
- {
-   return size;
- }
+       Node newNode = new Node(value);
+       Node current = head;
+       if(value.compareToIgnoreCase(head.getValue())<0)
+            {
+         head.setPrevious(newNode);
+         newNode.setNext(head);
+         head = newNode;
+       }
+          else if(value.compareToIgnoreCase(tail.getValue())>0)
+            {
+            tail.setNext(newNode);
+            newNode.setPrevious(tail);
+            tail = newNode;
+          }
+          else
+            {
+            while (current != null)
+            {
+              if(value.compareToIgnoreCase(current.getValue())>0 && 
+                 value.compareToIgnoreCase(current.getNext().getValue())<0)
+                   {
+                newNode.setPrevious(current);
+                  newNode.setNext(current.getNext());
+                  current.getNext().setPrevious(newNode);
+                  current.setNext(newNode);
+              }
+                 current = current.getNext();
+                 }
+}
+}
+}
+       
  public void forwardPrint()
  {
    Node current = head;
    while(current !=null)
    {
-     System.out.print(current.Value()+", ");
-     current = current.next;
+     System.out.print(current.getValue()+", ");
+     current = current.getNext();
    }
  }
- public boolean setHead()
+ public void backwardPrint()
+ {
+   Node current = tail;
+   while(current !=null)
+   {
+     System.out.print(current.getValue()+", ");
+     current = current.getPrevious();
+   }
+ }
+public boolean setHead()
  {
   return head == null; 
  }
  public static void main(String[] args)
  {
   LinkedList x = new LinkedList();
-  x.setFirst(3);
-  x.setFirst(2);
-  x.setFirst(1);
-  x.setLast(4);
+  x.add("A");
+  x.add("B");
+  x.add("C");
+  x.add("D");
   x.forwardPrint();
   System.out.println("");
+  x.backwardPrint();
   
  }
 }

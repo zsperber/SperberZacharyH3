@@ -1,27 +1,46 @@
 //* This Node class serves to initialise variables of type Node to use in a doubly linked list*/
 public class Node
 {
-  private int value; //field variable value of type int
+  private String value; //field variable value of type String
   public Node previous; //field variable previous of type Node
   public Node next; //field variable next of type Node
   
-  //* Sets values to the field variables*/
-  public Node(int value)
+  /* Sets values to the field variables*/
+  public Node(String value)
 {
   previous = null; //assigns previous to null
   this.value = value; //assigns value to itself
   next = null; //assigns next to null
   }
-  //*Node constructor assigns field variables to themselves*/
-  public Node(Node previous, int value, Node next)
-  {
-    this.previous = previous; //assigns previous to itself
+  /*Node constructor assigns field variables to themselves
+  public Node(String value)
+  { 
     this.value = value; //assigns value to itself
-    this.next = next; //assigns next to itself
-  }
+  } */
   //* method Value returns value for value*/
-  public int Value()
+  public String getValue()
   {
     return value; //returns value
   }
+  public void setValue(String value)
+  {
+    this.value = value;
+  }
+  public void setPrevious(Node previous)
+  {
+    this.previous = previous;
+  }
+  public Node getPrevious()
+  {
+    return previous;
+  }
+  public void setNext(Node next)
+  {
+    this.next = next;
+  }
+  public Node getNext()
+  {
+    return next;
+  }
+  
 }
